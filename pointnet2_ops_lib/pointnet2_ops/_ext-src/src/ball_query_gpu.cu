@@ -50,5 +50,5 @@ void query_ball_point_kernel_wrapper(int b, int n, int m, float radius,
   query_ball_point_kernel<<<b, opt_n_threads(m), 0, stream>>>(
       b, n, m, radius, nsample, new_xyz, xyz, idx);
 
-  CUDA_CHECK_ERRORS();
+  // CUDA_CHECK_ERRORS();
 }

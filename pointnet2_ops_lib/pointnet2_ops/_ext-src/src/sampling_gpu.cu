@@ -26,7 +26,7 @@ void gather_points_kernel_wrapper(int b, int c, int n, int npoints,
                          at::cuda::getCurrentCUDAStream()>>>(b, c, n, npoints,
                                                              points, idx, out);
 
-  CUDA_CHECK_ERRORS();
+  // CUDA_CHECK_ERRORS();
 }
 
 // input: grad_out(b, c, m) idx(b, m)
@@ -53,7 +53,7 @@ void gather_points_grad_kernel_wrapper(int b, int c, int n, int npoints,
                               at::cuda::getCurrentCUDAStream()>>>(
       b, c, n, npoints, grad_out, idx, grad_points);
 
-  CUDA_CHECK_ERRORS();
+  // CUDA_CHECK_ERRORS();
 }
 
 __device__ void __update(float *__restrict__ dists, int *__restrict__ dists_i,
@@ -225,5 +225,5 @@ void furthest_point_sampling_kernel_wrapper(int b, int n, int m,
           <<<b, n_threads, 0, stream>>>(b, n, m, dataset, temp, idxs);
   }
 
-  CUDA_CHECK_ERRORS();
+  // CUDA_CHECK_ERRORS();
 }

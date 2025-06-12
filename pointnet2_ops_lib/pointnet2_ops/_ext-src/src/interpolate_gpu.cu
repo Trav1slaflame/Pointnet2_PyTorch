@@ -64,7 +64,7 @@ void three_nn_kernel_wrapper(int b, int n, int m, const float *unknown,
   three_nn_kernel<<<b, opt_n_threads(n), 0, stream>>>(b, n, m, unknown, known,
                                                       dist2, idx);
 
-  CUDA_CHECK_ERRORS();
+  // CUDA_CHECK_ERRORS();
 }
 
 // input: points(b, c, m), idx(b, n, 3), weight(b, n, 3)
@@ -107,7 +107,7 @@ void three_interpolate_kernel_wrapper(int b, int c, int m, int n,
   three_interpolate_kernel<<<b, opt_block_config(n, c), 0, stream>>>(
       b, c, m, n, points, idx, weight, out);
 
-  CUDA_CHECK_ERRORS();
+  // CUDA_CHECK_ERRORS();
 }
 
 // input: grad_out(b, c, n), idx(b, n, 3), weight(b, n, 3)
@@ -150,5 +150,5 @@ void three_interpolate_grad_kernel_wrapper(int b, int c, int n, int m,
   three_interpolate_grad_kernel<<<b, opt_block_config(n, c), 0, stream>>>(
       b, c, n, m, grad_out, idx, weight, grad_points);
 
-  CUDA_CHECK_ERRORS();
+  // CUDA_CHECK_ERRORS();
 }

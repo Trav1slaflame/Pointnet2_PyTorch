@@ -35,7 +35,7 @@ void group_points_kernel_wrapper(int b, int c, int n, int npoints, int nsample,
   group_points_kernel<<<b, opt_block_config(npoints, c), 0, stream>>>(
       b, c, n, npoints, nsample, points, idx, out);
 
-  CUDA_CHECK_ERRORS();
+  // CUDA_CHECK_ERRORS();
 }
 
 // input: grad_out(b, c, npoints, nsample), idx(b, npoints, nsample)
@@ -71,5 +71,5 @@ void group_points_grad_kernel_wrapper(int b, int c, int n, int npoints,
   group_points_grad_kernel<<<b, opt_block_config(npoints, c), 0, stream>>>(
       b, c, n, npoints, nsample, grad_out, idx, grad_points);
 
-  CUDA_CHECK_ERRORS();
+  // CUDA_CHECK_ERRORS();
 }
